@@ -12,6 +12,7 @@ au FocusGained,BufEnter * checktime
 
 set nocompatible " 오리지널 vi와 호환성 제거
 set noexrc " Don't use local version of .(g)vimrc, .exerc
+set noswapfile	"swp 파일 생성 막기
 
 filetype on " 파일 종류 자동 인식
 "filetype plugin on
@@ -147,3 +148,7 @@ call vundle#begin()
 "    Plugin 'tpope/vim-fugitive' " Git
 call vundle#end()
 colorscheme dracula
+
+"call plug#begin('~/.vim/plugged')
+"    Plug 'pbondoer/vim-42header'
+"call plug#end()
