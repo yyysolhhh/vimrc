@@ -94,11 +94,11 @@ set background=dark
 "+------------------------------+
 " => Text, tab and indent related
 "+------------------------------+
-set expandtab " Use spaces instead of tabs
+"set expandtab " Use spaces instead of tabs
 set smarttab " Be smart when using tabs
 
-set shiftwidth=4 " 1 tab == 4 spaces
-set tabstop=4 " 탭으로 들여쓰기 시 사용할 스페이스 바 개수
+"set shiftwidth=4 " 1 tab == 4 spaces
+"set tabstop=4 " 탭으로 들여쓰기 시 사용할 스페이스 바 개수
 set softtabstop=4 " 스페이스 바 n개를 하나의 탭으로 처리
 
 set lbr " Linebreak on 500 characters
@@ -152,3 +152,6 @@ colorscheme dracula
 "call plug#begin('~/.vim/plugged')
 "    Plug 'pbondoer/vim-42header'
 "call plug#end()
+
+"let g:hdr42user = ''
+"let g:hdr42mail = '@student.42seoul.kr'
