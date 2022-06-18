@@ -8,7 +8,7 @@ au FocusGained,BufEnter * checktime
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
+"let mapleader = ","
 
 set nocompatible " 오리지널 vi와 호환성 제거
 set noexrc " Don't use local version of .(g)vimrc, .exerc
@@ -20,20 +20,12 @@ filetype plugin indent on " 파일 유형 플러그인 사용, 자동 완성 및
 
 set mouse=a " 마우스로 스크롤 및 리사이즈 가능 (n: Normal mode / v: Visual mode / i: Insert mode / a: All modes)
 set clipboard=unnamed " vim에서 복사한 내용이 클립보드에 저장
-"set ttymouse=xterm2 " 마우스로 window 사이즈 조절
-"if !has('nvim')
-"	set ttymouse=xterm2
-"endif
-"if has('nvim')
-"	tnoremap <Esc> <C-\><C-n>
-"endif
+
 "+------------------------------+
 " => VIM user interface
 "+------------------------------+
 " Set 7 lines to the cursor - when moving vertically using j/k
 "set so=7
-"set scrollfocus
-"set mousefocus
 
 set wildmenu " 자동 완성
 set ruler " Always shows current position
@@ -105,8 +97,8 @@ set background=dark
 "set expandtab " Use spaces instead of tabs
 set smarttab " Be smart when using tabs
 
-set shiftwidth=4 " 1 tab == 4 spaces
-set tabstop=4 " 탭으로 들여쓰기 시 사용할 스페이스 바 개수
+"set shiftwidth=4 " 1 tab == 4 spaces
+"set tabstop=4 " 탭으로 들여쓰기 시 사용할 스페이스 바 개수
 set softtabstop=4 " 스페이스 바 n개를 하나의 탭으로 처리
 
 set lbr " Linebreak on 500 characters
@@ -138,14 +130,13 @@ function! HasPaste()
 endfunction
 
 "+------------------------------+
-" => Vundle
+" => Plugin
 "+------------------------------+
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'VundleVim/Vundle.vim'
     Plugin 'dracula/vim', { 'name': 'dracula' }
-"	Plugin 'scrooloose/nerdtree' " 파일탐색기
-	Plugin 'preservim/nerdtree'
+"    Plugin 'scrooloose/nerdtree' " 파일탐색기
 "    스니펫
 "    Plugin 'honza/vim-snippets'
 "    Plugin 'garbas/vim-snipmate'
@@ -158,32 +149,9 @@ call vundle#begin()
 call vundle#end()
 colorscheme dracula
 
-" Nerdtree 관련
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreefind<CR>
-nnoremap <C-n> :NERDTree<CR>
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-" Start NERDTree when Vim starts with a directory argument.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+"call plug#begin('~/.vim/plugged')
+"    Plug 'pbondoer/vim-42header'
+"call plug#end()
 
-"+------------------------------+
-" => Plugin
-"+------------------------------+
-call plug#begin('~/.vim/plugged')
-    Plug 'pbondoer/vim-42header'
-"	" Use release branch (recommend)
-"	Plug 'neoclide/coc.nvim', {'branch': 'release'}	"자동완성, syntax error
-"	" Or build from source code by using yarn: https://yarnpkg.com
-"	Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
-call plug#end()
-
-let g:hdr42user = 'yesollee'
-let g:hdr42mail = 'yesollee@student.42seoul.kr'
+"let g:hdr42user = ''
+"let g:hdr42mail = '@student.42seoul.kr'
